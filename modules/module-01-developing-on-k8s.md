@@ -50,7 +50,7 @@ In this module, you will learn to:
 
 1. Configure [Kubernetes Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) for the `k8s-demo` Deployment:
 
-In the `k8s-demo` Deployment manifest:
+    In the `k8s-demo` Deployment manifest:
     
     - Create a readiness probe with a TCP socket check on the listening port of the API Server
     - Create a liveness probe with a HTTP check on the new `/healthz` endpoint
