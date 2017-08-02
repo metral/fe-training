@@ -2,15 +2,12 @@
 
 In this module, you will learn to:
   - Deploy a webapp to Kubernetes
-  - Expand the webapp to use other Kubernetes resources and best practices
-  - Work with the Tectonic Ingress Controller
-  - Stand up your own Ingress Controller
+  - Expand the webapp to use other Kubernetes resources
+  - Learn Kubernetes best practices
 
 ## Requirements
 * go 1.8.3
 * Kubernetes 1.7+
-
-## Tasks
 
 ### Setup - Run Go HTTP Server on Kubernetes
 
@@ -30,42 +27,43 @@ In this module, you will learn to:
 
 ### Exercises
 
-*Note:* For each exercise listed below, do the following where applicable before moving onto the next task:
+*Note:* For each exercise listed below, do the following where applicable before moving onto the next one:
 
-  * Complete the task
+  * Complete the exercise
   * Build the container and tag it by exercise number
   * Push the container to your personal `k8s-demo` repo in Quay
-  * Redeploy the app to k8s with the latest tag
+  * Re-deploy the app to k8s with the latest tag
 
-1. Add a new API endpoint in `k8s-demo` that:
+1. Add a new API endpoint in `k8s-demo` API Server that:
 
     - Accepts a `GET` request on `/testing`
-    - Returns an HTTP 200 and a body of "testing" 
+    - Returns a HTTP 200 and a body of "testing" 
 
    curl the service within the cluster, and outside of it.
 
-1. Add a new API endpoint in `k8s-demo` that:
+1. Add a new API endpoint in `k8s-demo` API Server that:
 
     - Accepts a `GET` request on `/healthz`
-    - Returns an HTTP 200 and a body of "ok" 
+    - Returns a HTTP 200 and a body of "ok" 
 
    curl the service within the cluster, and outside of it.
 
-1. Configure [Kubernetes Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) for the `k8s-demo` deployment:
+1. Configure [Kubernetes Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) for the `k8s-demo` Deployment:
     
-    - Create a readiness probe with a TCP socket check on the listening port of the API server
-    - Create a liveness probe with an HTTP check on the new `/healthz` endpoint
+    - Create a readiness probe with a TCP socket check on the listening port of the API Server
+    - Create a liveness probe with a HTTP check on the new `/healthz` endpoint
 
-1. Modify the `/healthz` endpoint in `k8s-demo` to return an HTTP 500. What
-   happens during deployment when this change is rolled out?
+1. Modify the `/healthz` endpoint in `k8s-demo` to return a HTTP 500. What
+   happens to the deployment of the Pods as this new deployment is rolled out?
 
-1. Delete the `k8s-demo` deployment and create the [LimitRange](https://kubernetes.io/docs/tasks/administer-cluster/cpu-memory-limit/) provided:
+1. Delete the `k8s-demo` deployment and create the [LimitRange](https://kubernetes.io/docs/tasks/administer-cluster/cpu-memory-limit/) provided in the URL:
     ```
     $ kubectl delete deploy/foobar
     $ kubectl create -f https://git.io/v7EoU
     ```
 
-   Now, try redeploying the `k8s-demo` from exercise/tag #2. What happens?
+   Now, try re-deploying the `k8s-demo` from exercise/tag #2. What happens to
+   the Pods, Deployment, and Replica Set?
 
 1. Modify the k8s-demo deployment to request 10 mebibytes of RAM and 1/50th of 1 CPU core from the cluster, and have a limit of 2x the amount of each resource requested.
 
