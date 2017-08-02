@@ -59,7 +59,7 @@ In this module, you will learn to:
 1. Modify the `/healthz` endpoint in `k8s-demo` to return an HTTP 500. What
    happens during deployment when this change is rolled out?
 
-1. Delete the `k8s-demo` deployment and create the LimitRange provided:
+1. Delete the `k8s-demo` deployment and create the [LimitRange](https://kubernetes.io/docs/tasks/administer-cluster/cpu-memory-limit/) provided:
     ```
     $ kubectl delete deploy/foobar
     $ kubectl create -f https://git.io/v7EoU
