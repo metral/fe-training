@@ -34,14 +34,14 @@ In this module, you will learn to:
   * Push the container to your personal `k8s-demo` repo in Quay
   * Re-deploy the app to k8s with the latest tag
 
-1. Add a new API endpoint in `k8s-demo` API Server that:
+1. Add a new API endpoint in the `k8s-demo` API Server that:
 
     - Accepts a `GET` request on `/testing`
     - Returns a HTTP 200 and a body of "testing" 
 
    curl the service within the cluster, and outside of it.
 
-1. Add a new API endpoint in `k8s-demo` API Server that:
+1. Add a new API endpoint in the `k8s-demo` API Server that:
 
     - Accepts a `GET` request on `/healthz`
     - Returns a HTTP 200 and a body of "ok" 
@@ -49,14 +49,16 @@ In this module, you will learn to:
    curl the service within the cluster, and outside of it.
 
 1. Configure [Kubernetes Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) for the `k8s-demo` Deployment:
+
+In the `k8s-demo` Deployment manifest:
     
     - Create a readiness probe with a TCP socket check on the listening port of the API Server
     - Create a liveness probe with a HTTP check on the new `/healthz` endpoint
 
-1. Modify the `/healthz` endpoint in `k8s-demo` to return a HTTP 500. What
-   happens to the deployment of the Pods as this new deployment is rolled out?
+1. Modify the `/healthz` endpoint in the `k8s-demo` to return a HTTP 500. What
+   happens to the Pors as this new Deployment is rolled out?
 
-1. Delete the `k8s-demo` deployment and create the [LimitRange](https://kubernetes.io/docs/tasks/administer-cluster/cpu-memory-limit/) provided in the URL:
+1. Delete the `k8s-demo` Deployment and create the [LimitRange](https://kubernetes.io/docs/tasks/administer-cluster/cpu-memory-limit/) provided in the URL:
     ```
     $ kubectl delete deploy/foobar
     $ kubectl create -f https://git.io/v7EoU
@@ -65,7 +67,7 @@ In this module, you will learn to:
    Now, try re-deploying the `k8s-demo` from exercise/tag #2. What happens to
    the Pods, Deployment, and Replica Set?
 
-1. Modify the k8s-demo deployment to request 10 mebibytes of RAM and 1/50th of 1 CPU core from the cluster, and have a limit of 2x the amount of each resource requested.
+1. Modify the k8s-demo Deployment to request 10 mebibytes of RAM and 1/50th of 1 CPU core from the cluster, and have a limit of 2x the amount of each resource requested.
 
     - [Hint (if needed)](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container#resource-requests-and-limits-of-pod-and-container)
 
