@@ -56,7 +56,7 @@ In this module, you will learn to:
     - Create a liveness probe with a HTTP check on the new `/healthz` endpoint
 
 1. Modify the `/healthz` endpoint in the `k8s-demo` to return a HTTP 500. What
-   happens to the Pors as this new Deployment is rolled out?
+   happens to the Pods as this new Deployment is rolled out?
 
 1. Delete the `k8s-demo` Deployment and create the [LimitRange](https://kubernetes.io/docs/tasks/administer-cluster/cpu-memory-limit/) provided in the URL:
     ```
